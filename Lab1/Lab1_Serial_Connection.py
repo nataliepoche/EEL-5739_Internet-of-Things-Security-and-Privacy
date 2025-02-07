@@ -29,7 +29,7 @@ def query(ser_conn, message): # Get message
 
 # Initialize serial connection
 serial_conn = serial.Serial('COM5', baudrate=19200, parity=serial.PARITY_ODD, timeout=0.1)
-read_block(serial_conn, 100)
+read_block(serial_conn, 100) # Change to a lower number to be faster
 
 # # Manually plug in:
 # query(serial_conn, 'I0t\r')                      # Enters result to try
@@ -37,7 +37,7 @@ read_block(serial_conn, 100)
 
 # Should take less than 5 lines of code
 # Initialize variables to brute force with
-upper_letters = [A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z] 
+upper_letters = [A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z] # "ABCDEFGHIJKLMNOPQRSTUVWXYZ" does not work
 digits = [0,1,2,3,4,5,6,7,8,9]
 lower_letters = [a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,,r,s,t,u,v,w,x,y,z]
 
