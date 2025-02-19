@@ -1,4 +1,5 @@
 import serial
+import string
 baudrates = [9600, 19200, 115200]
 parities = [serial.PARITY_NONE, serial.PARITY_EVEN, serial.PARITY_ODD]
 
@@ -37,9 +38,9 @@ read_block(serial_conn, 100) # Change to a lower number to be faster
 
 # Should take less than 5 lines of code
 # Initialize variables to brute force with
-upper_letters = [A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z] # "ABCDEFGHIJKLMNOPQRSTUVWXYZ" does not work
-digits = [0,1,2,3,4,5,6,7,8,9]
-lower_letters = [a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,,r,s,t,u,v,w,x,y,z]
+upper_letters = string.ascii_uppercase # "ABCDEFGHIJKLMNOPQRSTUVWXYZ" does not work
+digits = string.digits
+lower_letters = string.ascii_lowercase
 
 # # Opens a file to write the results in
 with open('results.txt', 'w') as file:
@@ -48,7 +49,7 @@ with open('results.txt', 'w') as file:
     for upper in upper_letters:                                          # Loops through upper case letters
         for digit in digits:                                             # loops through digits
             for lower in lower_letters:                                  # Loops through lower case letters
-                passwd = f'{upper}{digit}{lower}' + '\r'                 # Brings together the combination and enter command
+                passwd = upper + digit + lower + '\r'                 # Brings together the combination and enter command
                 print(passwd)                                            # prints out result
                 result = query(serial_conn, passwd)                      # Enters result to try
 
